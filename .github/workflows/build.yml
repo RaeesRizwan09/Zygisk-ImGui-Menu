@@ -19,7 +19,7 @@ jobs:
     - run: |
         chmod +x ./gradlew
         sed -i 's/moduleDescription = "/moduleDescription = "(${{ github.event.inputs.package_name }}) /g' module.gradle
-        sed -i "s/com.game.packagename/${{ github.event.inputs.package_name }}/g" module/src/main/cpp/hook.cpp
+        sed -i "s/com.kakaogames.gdts/${{ github.event.inputs.package_name }}/g" module/src/main/cpp/hook.cpp
         ./gradlew :module:assembleRelease
     - uses: actions/upload-artifact@v3
       with:
