@@ -16,7 +16,7 @@ void Pointers() {
 }
 
 void Patches() {
-    PATCH_SWITCH("0x1CF032C", "E0568B52607CA272C0035FD6", showAllItems);
+    PATCH_SWITCH("0xCA7D48", "800C8052C0035FD6", showAllItems);
 }
 
 // declare your hooks here
