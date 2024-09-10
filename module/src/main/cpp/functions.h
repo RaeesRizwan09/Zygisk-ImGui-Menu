@@ -2,7 +2,17 @@
 #define ZYCHEATS_SGUYS_FUNCTIONS_H
 
 // here you can define variables for the patches
-bool addCurrency, freeItems, everythingUnlocked, showAllItems, addSkins;
+bool addCurrency, freeItems, everythingUnlocked, showAllItems, addSkins, Aimline;
+
+float (*old_line)(void *player);
+float new_line(void *player) {
+      if(player != NULL && Aimline) {
+       return (float) 99999.0f;
+      }
+    return old_line(player);
+
+}
+
 
 monoString *CreateIl2cppString(const char *str) {
     monoString *(*String_CreateString)(void *instance, const char *str) = (monoString*(*)(void*, const char*)) (g_il2cppBaseMap.startAddress + string2Offset(OBFUSCATE("0x2596B20")));
@@ -16,7 +26,7 @@ void Pointers() {
 }
 
 void Patches() {
-    PATCH_SWITCH("0xCA7D48", "800C8052C0035FD6", showAllItems);
+    //PATCH_SWITCH("0xCA7D48", "800C8052C0035FD6", showAllItems);
 }
 
 // declare your hooks here
@@ -48,8 +58,8 @@ void* ProductDefinition(void *instance, monoString* id, monoString* storeSpecifi
 }
 
 void Hooks() {
-    HOOK("0xE7BC74", Backend, old_Backend);
-    HOOK("0x29DA08C", ProductDefinition, old_ProductDefinition);
+    HOOK("0xCA7D48", new_line, old_line);
+    //HOOK("0x29DA08C", ProductDefinition, old_ProductDefinition);
 }
 
 #endif //ZYCHEATS_SGUYS_FUNCTIONS_H
