@@ -28,7 +28,7 @@ void DrawMenu()
                 }
                 Checkbox(OBFUSCATE("Everything unlocked"), &everythingUnlocked);
                 Checkbox(OBFUSCATE("Free Items"), &freeItems);
-                Checkbox(OBFUSCATE("Unlimited Currency"), &showAllItems);
+                Checkbox(OBFUSCATE("Unlimited Currency"), &Aimline);
                 EndTabItem();
             }
             EndTabBar();
